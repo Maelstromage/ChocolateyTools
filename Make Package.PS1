@@ -81,7 +81,7 @@ $chocolateyinstall[
     $chocolateyinstall.indexof(
         '  #file         = $fileLocation'
     )
-] = "  #file         = $toolsinstalllocation"
+] = '  file         = Join-Path $toolsDir ' + "'" + $filebrowser.SafeFileName + "'"
 if ($extension -eq 'MSI'){
     $chocolateyinstall[
         $chocolateyinstall.indexof(
@@ -106,12 +106,10 @@ $chocolateyinstall[
         '#Install-ChocolateyInstallPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateyinstallpackage'
     )
 ] = 'Install-ChocolateyInstallPackage @packageArgs # https://docs.chocolatey.org/en-us/create/functions/install-chocolateyinstallpackage'
+set-content  $chocolateyinstalllocation $chocolateyinstall
 
 Remove-Item $Readmelocation
 Remove-item $chocolateyuninstalllocation
 
 & "$env:ProgramData\chocolatey\choco.exe" pack $nuspeclocation --outputdirectory $savelocation
 
-<#
-VLC is a free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols.
-#>
