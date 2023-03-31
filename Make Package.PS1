@@ -1,5 +1,5 @@
 $packageslocation = "c:\packages\"
-$savelocation = "\\usblns-file2\packages\"
+$savelocation = ""
 [void][Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic')
 add-type -assemblyname system.windows.forms
 
